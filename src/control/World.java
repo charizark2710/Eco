@@ -1,10 +1,11 @@
 package control;
 import java.util.*;
-public class World {
+public class World extends Thread{
 	public int nRow;
 	public int nColumn;
 	private double[][] grass;
-	int n;
+	private double grassGrowingSpeed = 0.1;
+	public static int TIME_STEP=1000;
 	World(int x, int y){
 		nRow = x;
 		nColumn = y;
@@ -18,6 +19,26 @@ public class World {
 	}
 	public double getGrass(int i, int j){
 		return grass[i][j];
+	}
+
+	public void run() {
+		Random rd = new Random();
+		while(true) {
+			for(int i=0;i<nRow;i++) {
+				for(int j=0; j<nColumn; j++) {
+					double x = rd.nextDouble()*grassGrowingSpeed;
+					grass[i][j] += x;
+					if(grass[i][j]>1) {
+						grass[i][j] = 1;
+					}
+					
+				}
+			}
+			try {Thread.sleep(World.TIME_STEP);}
+					catch(Exception e) {
+						e.printStackTrace();
+					}
+		}
 	}
 	
 	
