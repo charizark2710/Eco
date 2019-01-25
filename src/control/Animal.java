@@ -33,5 +33,21 @@ public class Animal extends Thread implements IAnimal {
 		// TODO Auto-generated method stub
 		return null;
 	}
+
+	public int getCurrentRow() {
+		return CurrentRow;
+	}
+
+	public void setCurrentRow(int currentRow) {
+		CurrentRow = currentRow;
+	}
+
+	public int getCurrentColumn() {
+		return CurrentColumn;
+	}
+
+	public void setCurrentColumn(int CurrentColumn) {
+		CurrentColumn = CurrentColumn;
+	}
 	
 }

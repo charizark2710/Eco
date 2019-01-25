@@ -6,7 +6,8 @@ public class World extends Thread{
 	private double[][] grass;
 	private double grassGrowingSpeed = 0.1;
 	public static int TIME_STEP=1000;
-	World(int x, int y){
+	public Animal animal;
+	public World(int x, int y){
 		nRow = x;
 		nColumn = y;
 		Random rd = new Random();
