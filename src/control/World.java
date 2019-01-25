@@ -21,19 +21,10 @@ public class World extends Thread{
 		return grass[i][j];
 	}
 
+
 	public void run() {
-		Random rd = new Random();
-		while(true) {
-			for(int i=0;i<nRow;i++) {
-				for(int j=0; j<nColumn; j++) {
-					double x = rd.nextDouble()*grassGrowingSpeed;
-					grass[i][j] += x;
-					if(grass[i][j]>1) {
-						grass[i][j] = 1;
-					}
-					
-				}
-			}
+		while (true) {
+			grow();
 			try {Thread.sleep(World.TIME_STEP);}
 					catch(Exception e) {
 						e.printStackTrace();
@@ -41,6 +32,17 @@ public class World extends Thread{
 		}
 	}
 	
-	
+	private void grow() {
+			Random rd = new Random();
+			for(int i=0;i<nRow;i++) {
+				for(int j=0; j<nColumn; j++) {
+					double x = rd.nextDouble()*grassGrowingSpeed;
+					grass[i][j] += x;
+					grass[i][j] = (grass[i][j]>1) ? 1 : grass[i][j]  ;
+					
+				}
+			}
+	}
+
 }
 
