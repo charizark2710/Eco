@@ -9,7 +9,7 @@ public class Animal extends Thread implements IAnimal {
 	protected World world1;
 	protected int CurrentRow;
 	protected int CurrentColumn;
-	protected Random rd = new Random();
+	protected Random rd;
 	@Override
 	public Object eat(Object o) {
 		// TODO Auto-generated method stub
@@ -38,8 +38,8 @@ public class Animal extends Thread implements IAnimal {
 		return CurrentRow;
 	}
 
-	public void setCurrentRow(int currentRow) {
-		CurrentRow = currentRow;
+	public void setCurrentRow(int CurrentRow) {
+		this.CurrentRow = CurrentRow;
 	}
 
 	public int getCurrentColumn() {
@@ -47,7 +47,7 @@ public class Animal extends Thread implements IAnimal {
 	}
 
 	public void setCurrentColumn(int CurrentColumn) {
-		CurrentColumn = CurrentColumn;
+		this.CurrentColumn = CurrentColumn;
 	}
 	
 }

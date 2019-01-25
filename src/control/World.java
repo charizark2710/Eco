@@ -5,12 +5,13 @@ public class World extends Thread{
 	public int nColumn;
 	private double[][] grass;
 	private double grassGrowingSpeed = 0.1;
-	public static int TIME_STEP=1000;
+	public static int TIME_STEP=5000;
+	Random rd;
 	public Animal animal;
 	public World(int x, int y){
-		nRow = x;
-		nColumn = y;
-		Random rd = new Random();
+		this.nRow = x;
+		this.nColumn = y;
+		rd = new Random();
 		grass = new double[x][y];
 		for(int i = 0; i < x; i++) {
 			for(int j =0; j<y; j++) {
@@ -34,11 +35,9 @@ public class World extends Thread{
 	}
 	
 	private void grow() {
-			Random rd = new Random();
 			for(int i=0;i<nRow;i++) {
 				for(int j=0; j<nColumn; j++) {
-					double x = rd.nextDouble()*grassGrowingSpeed;
-					grass[i][j] += x;
+					grass[i][j] += rd.nextDouble()*grassGrowingSpeed;
 					grass[i][j] = (grass[i][j]>1) ? 1 : grass[i][j]  ;
 					
 				}

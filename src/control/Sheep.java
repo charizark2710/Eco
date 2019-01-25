@@ -3,32 +3,32 @@ import java.util.*;
 
 public class Sheep extends Animal{
 	public static double lOSS_ENERGY=0.01;
-	Sheep(double energy, int speed, World world1, int CurrentRow, int CurrentColumn){
+	public Sheep(double energy, int speed, World world1, int Row, int Column){
 		this.energy=energy;
 		this.speed = speed;
 		this.world1 = world1;
-		this.CurrentRow=CurrentRow;
-		this.CurrentColumn=CurrentColumn;
+		this.CurrentRow=Row;
+		this.CurrentColumn=Column;
 		this.rd= new Random();
-		iMale = rd.nextBoolean();
+		this.iMale = rd.nextBoolean();
 	
 	}
 	public Object move(Object o) {
 		CurrentRow += rd.nextInt(2*speed+1)-speed;
 		CurrentColumn += rd.nextInt(2*speed+1)-speed;
 		if(CurrentRow >= world1.nRow) {
-			CurrentRow %= world1.nRow;
+			CurrentRow -= world1.nRow;
 		}
 		if(CurrentRow<0) {
 			CurrentRow +=world1.nRow;
 		}
 		if(CurrentColumn>=world1.nColumn) {
-			CurrentColumn%=world1.nColumn;
+			CurrentColumn-=world1.nColumn;
 		}
 		if(CurrentColumn<0) {
 			CurrentColumn +=world1.nColumn;
 		}
-		energy-=lOSS_ENERGY;
+		energy-=lOSS_ENERGY*speed;
 		return null;
 	}
 	public void run() {

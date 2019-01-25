@@ -1,4 +1,8 @@
-package control;
+package view;
+import control.Animal;
+import control.Sheep;
+import control.World;
+
 
 public class ViewWorld {
 	public static void main(String[] args) {
@@ -10,16 +14,16 @@ public class ViewWorld {
 		while(true) {
 			double[][] view = new double[world1.nRow][world1.nColumn];
 			for(int i = 0; i<world1.nRow; i++) {
-				for(int j=0; j<=world1.nColumn;j++) {
-					view[i][j]=world1.getGrass(i,j);
+				for(int j=0; j<world1.nColumn;j++) {
+					view[i][j] = world1.getGrass(i,j);
 				}
 			}
-			view[animal.getCurrentColumn()][animal.getCurrentRow()]=2;
+			view[animal.getCurrentRow()][animal.getCurrentColumn()] = 2;
 			for(int i = 0; i < world1.nRow; i++) {
 				for(int j = 0; j<world1.nColumn; j++) {
 					System.out.print(String.format("%.2f  ", view[i][j] ) + " " );
 				}
-				System.out.println();
+				System.out.println("");
 			}
 			
 			try {
